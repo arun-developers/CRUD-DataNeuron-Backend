@@ -2,7 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  name: {
+  title: {
+    type: String,
+    required: true,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+  content: {
     type: String,
     required: true,
   },
@@ -14,7 +22,7 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  mobile: {
+  contact: {
     type: String,
     required: true,
   },

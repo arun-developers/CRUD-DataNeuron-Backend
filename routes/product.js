@@ -11,22 +11,26 @@ const validateReqSchema = require("../middleware/validateReqSchema");
 
 const getProductSchema = Joi.object({
   uuids: Joi.string(),
-  name: Joi.string(),
+  author: Joi.string(),
 });
 
 const createProductSchema = Joi.object({
-  name: Joi.string().required(),
+  title:Joi.string().required(),
+  author: Joi.string().required(),
+  content:Joi.string().required(),
   address: Joi.string().required(),
   city: Joi.string().required(),
-  mobile: Joi.string().min(10).max(10).required(),
+  contact: Joi.string().min(10).max(10).required(),
 });
 
 const updateProductSchema = Joi.object({
   uuid: Joi.string().required(),
-  name: Joi.string(),
+  title:Joi.string(),
+  author: Joi.string(),
+  content:Joi.string(),
   address: Joi.string(),
   city: Joi.string(),
-  mobile: Joi.string().min(10).max(10),
+  contact: Joi.string().min(10).max(10),
 });
 
 const deleteProductSchema = Joi.object({
