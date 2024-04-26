@@ -18,15 +18,23 @@ const getProduct = async (req, res) => {
   try {
     let QUERY = req.query;
     let where = {};
+    let sortBy = {};
 
     if (QUERY.uuids) {
       where._id = { $in: QUERY.uuids.split(",") };
     }
-
-    if (QUERY.name) {
-      where.name = { $in: QUERY.name.split(",") };
+    if (QUERY.title) {
+      where.title = { $in: QUERY.title.split(",") };
     }
-    const response = await Product.find(where);
+    if (QUERY.sort) {
+      if (QUERY.sort === "des") {
+        sortBy.createdAt = -1;
+      }
+      if (QUERY.sort === "asc") {
+        sortBy.createdAt = 1;
+      }
+    }
+    const response = await Product.find(where).sort(sortBy);
     return res.json(response);
   } catch (Exception) {
     console.log(Exception);
