@@ -1,4 +1,3 @@
-const product = require("../model/product");
 const Product = require("../model/product");
 
 const createProduct = async (req, res) => {
@@ -75,7 +74,7 @@ const deleteProduct = async (req, res) => {
       throw { statusCode: 404, message: `No product found ${QUERY.uuid}` };
     }
 
-    let DeletedProduct = await product.findByIdAndDelete({
+    let DeletedProduct = await Product.findByIdAndDelete({
       _id: foundProduct._id,
     });
 
